@@ -34,5 +34,6 @@ public class FollowTarget : Physics2DObject
 		//Move towards the target
 		rigidbody2D.MovePosition(Vector2.Lerp(transform.position, target.position, Time.fixedDeltaTime * speed));
 
+        
 	}
 }

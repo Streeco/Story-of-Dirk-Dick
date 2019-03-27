@@ -30,7 +30,7 @@ public class ModifyHealthAttribute : MonoBehaviour
 
 			if(destroyWhenActivated)
 			{
-				Destroy(this.gameObject);
+                Destroy(this.gameObject);
 			}
 		}
 	}

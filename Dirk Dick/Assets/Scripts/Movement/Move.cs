@@ -22,12 +22,13 @@ public class Move : Physics2DObject
 	private float moveHorizontal;
 	private float moveVertical;
 
-
 	// Update gets called every frame
 	void Update ()
-	{	
-		// Moving with the arrow keys
-		if(typeOfControl == Enums.KeyGroups.ArrowKeys)
+	{
+        float move = Input.GetAxis("Horizontal");
+
+        // Moving with the arrow keys
+        if (typeOfControl == Enums.KeyGroups.ArrowKeys)
 		{
 			moveHorizontal = Input.GetAxis("Horizontal");
 			moveVertical = Input.GetAxis("Vertical");
@@ -37,7 +38,7 @@ public class Move : Physics2DObject
 			moveHorizontal = Input.GetAxis("Horizontal2");
 			moveVertical = Input.GetAxis("Vertical2");
 		}
-
+         
 		//zero-out the axes that are not needed, if the movement is constrained
 		switch(movementType)
 		{
@@ -48,8 +49,9 @@ public class Move : Physics2DObject
 				moveHorizontal = 0f;
 				break;
 		}
-			
-		movement = new Vector2(moveHorizontal, moveVertical);
+
+       
+        movement = new Vector2(moveHorizontal, moveVertical);
 
 
 		//rotate the GameObject towards the direction of movement
@@ -64,7 +66,7 @@ public class Move : Physics2DObject
 		}
 	}
 
-
+   
 
 	// FixedUpdate is called every frame when the physics are calculated
 	void FixedUpdate ()
