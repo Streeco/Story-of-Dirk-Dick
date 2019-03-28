@@ -21,8 +21,6 @@ public class Player_Movement : MonoBehaviour
         Vector2 moveInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         moveVelocity = moveInput.normalized * speed;
 
-
-
         if (Input.GetAxis("Horizontal") < 0 && isRight) Flip();
         if (Input.GetAxis("Horizontal") > 0 && !isRight) Flip();
     }
