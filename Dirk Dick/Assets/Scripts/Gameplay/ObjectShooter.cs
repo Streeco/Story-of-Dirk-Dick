@@ -28,20 +28,33 @@ public class ObjectShooter : MonoBehaviour
 	// Will be set to 0 or 1 depending on how the GameObject is tagged
 	private int playerNumber;
 
+    Player_Movement m; // movement script
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
 	{
 		timeOfLastSpawn = -creationRate;
+        m = (Player_Movement)gameObject.GetComponent("Player_Movement");
 
-		// Set the player number based on the GameObject tag
-		playerNumber = (gameObject.CompareTag("Player")) ? 0 : 1;
+        // Set the player number based on the GameObject tag
+        playerNumber = (gameObject.CompareTag("Player")) ? 0 : 1;
 	}
 
 
 	// Update is called once per frame
 	void Update ()
 	{
+        // sets the shooting direction to the facing direction
+        if (m.isRight)
+        {
+            shootDirection = new Vector2(1f, 0);
+        }
+        else
+        {
+            shootDirection = new Vector2(-1f, 0);
+        }
+        
+
 		if(Input.GetKey(keyToPress)
 		   && Time.time >= timeOfLastSpawn + creationRate)
 		{

@@ -6,7 +6,7 @@ public class Player_Movement : MonoBehaviour
 {
     
     public float speed;
-    //private Vector2 moveVelocity;
+    private Vector2 moveVelocity;
     private Rigidbody2D rb;
     public bool isRight;
 
@@ -18,8 +18,8 @@ public class Player_Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Vector2 moveInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        //moveVelocity = moveInput.normalized * speed;
+        Vector2 moveInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        moveVelocity = moveInput.normalized * speed;
 
         Rigidbody rb = GetComponent<Rigidbody>();
         if (Input.GetKey(KeyCode.A))
@@ -37,7 +37,7 @@ public class Player_Movement : MonoBehaviour
 
     void FixedUpdate()
     {
-        //rb.MovePosition(rb.position + moveVelocity * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + moveVelocity * Time.fixedDeltaTime);
         
     }
 
