@@ -21,16 +21,6 @@ public class Player_Movement : MonoBehaviour
         Vector2 moveInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         moveVelocity = moveInput.normalized * speed;
 
-        Rigidbody rb = GetComponent<Rigidbody>();
-        if (Input.GetKey(KeyCode.A))
-            rb.AddForce(Vector3.left);
-        if (Input.GetKey(KeyCode.D))
-            rb.AddForce(Vector3.right);
-        if (Input.GetKey(KeyCode.W))
-            rb.AddForce(Vector3.up);
-        if (Input.GetKey(KeyCode.S))
-            rb.AddForce(Vector3.down);
-
         if (Input.GetAxis("Horizontal") < 0 && isRight) Flip();
         if (Input.GetAxis("Horizontal") > 0 && !isRight) Flip();
     }
