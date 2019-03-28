@@ -148,7 +148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidbody2D: {fileID: 0}
   target: {fileID: 1804714980}
-  speed: 2
+  speed: 0.5
   lookAtTarget: 0
   useSide: 0
 --- !u!50 &402446440
@@ -615,8 +615,8 @@ GameObject:
   - component: {fileID: 2075136382}
   - component: {fileID: 2075136381}
   - component: {fileID: 2075136385}
-  - component: {fileID: 2075136384}
   - component: {fileID: 2075136383}
+  - component: {fileID: 2075136384}
   m_Layer: 0
   m_Name: Background city Seamless
   m_TagString: Untagged
@@ -699,8 +699,8 @@ EdgeCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 3.5}
-  m_EdgeRadius: 0.01
+  m_Offset: {x: 0, y: 5.5}
+  m_EdgeRadius: 1.2
   m_Points:
   - {x: -15.5, y: 0}
   - {x: 15.5, y: 0}
@@ -717,8 +717,8 @@ EdgeCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -8.5}
-  m_EdgeRadius: 0.01
+  m_Offset: {x: 0, y: -10.9}
+  m_EdgeRadius: 1.2
   m_Points:
   - {x: -15.5, y: 0}
   - {x: 15.5, y: 0}
