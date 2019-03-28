@@ -196,7 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fa3c260db47248a18ecb8112019040d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyWhenActivated: 0
+  destroyWhenActivated: 1
   healthChange: -1
 --- !u!114 &8122003968035776956
 MonoBehaviour:
