@@ -34,8 +34,8 @@ public class ObjectShooter : MonoBehaviour
     void Start ()
 	{
 		timeOfLastSpawn = -creationRate;
-        m = (Player_Movement)gameObject.GetComponent("Player_Movement");
-
+        m = GetComponentInParent<Player_Movement>();
+        
         // Set the player number based on the GameObject tag
         playerNumber = (gameObject.CompareTag("Player")) ? 0 : 1;
 	}
