@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class BoxingRobotAI : MonoBehaviour
 {
-    public float speed = 50;
-
+    public float speed = 25;
+    
     bool aggroed = false;
     public bool attacking = false;
     GameObject player;
     Rigidbody2D rb;
-    bool isRight = false;
     Animator animator;
     Vector2 direction;
+    bool isRight = false;
+    bool damageDealt = true;
+    int attackAnimation;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +28,7 @@ public class BoxingRobotAI : MonoBehaviour
     void Update()
     {
         // If not attacking and player gets near, attack
-        if (aggroed == false && Vector3.Distance(player.transform.position, transform.position) < 300)
+        if (aggroed == false && Vector3.Distance(player.transform.position, transform.position) < 10)
         {
             aggroed = true;
         }
@@ -49,8 +51,22 @@ public class BoxingRobotAI : MonoBehaviour
 
     void Flip()
     {
+        //if (/*isRight == false*/true)
+        //{
+            //transform.Find("Attack1").transform.localPosition = new Vector3(3.22f, 1);
+            //transform.Find("Attack2").transform.localPosition = new Vector3(4.56f, 0);
+            //transform.Find("Attack3").transform.localPosition = new Vector3(6.98f, 0);
+        //}
+        //else
+        //{
+        //    transform.Find("Attack1").transform.localPosition = new Vector3(3.22f, 1);
+        //    transform.Find("Attack2").transform.localPosition -= new Vector3(4.56f, 0);
+        //    transform.Find("Attack3").transform.localPosition -= new Vector3(6.98f, 0);
+        //}
+
         isRight = !isRight;
         transform.Rotate(Vector3.up * 180);
+        
     }
 
     void AnimationHandling()
@@ -66,16 +82,47 @@ public class BoxingRobotAI : MonoBehaviour
         }
 
         // Set attack animation
-        if (Vector2.Distance(player.transform.position, transform.position) < 4)
+        if (damageDealt == true && Vector2.Distance(player.transform.position, transform.position) < 4)
         {
             attacking = true;
-            animator.SetInteger("Attack", Random.Range(1, 4));
+            attackAnimation = Random.Range(1, 4);
+            animator.SetInteger("Attack", attackAnimation);
+            damageDealt = false;
         }
         else
         {
             attacking = false;
             animator.SetInteger("Attack", 0);
+            damageDealt = true;
+        }
+    }
+
+    void DealDamage()
+    {
+        CircleCollider2D hand;
+        switch (attackAnimation)
+        {
+            case 1:
+                hand = transform.Find("Attack1").GetComponent<CircleCollider2D>();
+                break;
+            case 2:
+                hand = transform.Find("Attack2").GetComponent<CircleCollider2D>();
+                break;
+            case 3:
+                hand = transform.Find("Attack3").GetComponent<CircleCollider2D>();
+                break;
+            default:
+                hand = transform.Find("Attack1").GetComponent<CircleCollider2D>();
+                break;
         }
 
+        hand.enabled = true;
+        if (Physics2D.IsTouching(hand, player.GetComponent<CapsuleCollider2D>()))
+        {
+            player.transform.position = new Vector3(100, 100);
+        }
+
+        hand.enabled = false;
+        damageDealt = true;
     }
 }
