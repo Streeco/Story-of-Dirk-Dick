@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class AttackCollision : MonoBehaviour
 {
-
+    GameObject player;
+    void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
     // Update is called once per frame
     void Update()
     {
@@ -17,7 +21,7 @@ public class AttackCollision : MonoBehaviour
         {
             GetComponentInParent<BoxingRobotAI>().hand.enabled = false;
             GetComponentInParent<BoxingRobotAI>().enemyRecievedDamage = true;
-            GameObject.Find("McDinglenuts").transform.position += new Vector3(0, 1);
+            player.GetComponent<HealthScript>().Health -= GetComponentInParent<BoxingRobotAI>().damage;
         }
     }
 }

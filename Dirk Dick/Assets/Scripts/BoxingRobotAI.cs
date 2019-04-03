@@ -11,6 +11,7 @@ public class BoxingRobotAI : MonoBehaviour
     public bool attacking = false;
     [HideInInspector]
     public bool enemyRecievedDamage = true;
+    public int damage = 5;
 
     bool aggroed = false;
     GameObject player;
