@@ -19,7 +19,7 @@ public class Player_Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 moveInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        Vector2 moveInput = new Vector2(Input.GetAxis("Horizontal2"), Input.GetAxis("Vertical2"));
         moveVelocity = moveInput.normalized * speed;
 
 
