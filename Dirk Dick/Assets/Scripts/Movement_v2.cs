@@ -22,7 +22,7 @@ public class Movement_v2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float movementHorizontal = Input.GetAxis("Horizontal");
+        float movementHorizontal = Input.GetAxis("Horizontal2");
         Vector2 moveVelocity = new Vector2(movementHorizontal, 0).normalized * speed * Time.deltaTime * 10;
 
 
