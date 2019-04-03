@@ -9,19 +9,20 @@ public class AttackCollision : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
     }
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && GetComponentInParent<BoxingRobotAI>() != null)
         {
             GetComponentInParent<BoxingRobotAI>().hand.enabled = false;
             GetComponentInParent<BoxingRobotAI>().enemyRecievedDamage = true;
             player.GetComponent<HealthScript>().Health -= GetComponentInParent<BoxingRobotAI>().damage;
+        }
+        else
+        {
+            GetComponentInParent<SpeedRobotAI>().hand.enabled = false;
+            GetComponentInParent<SpeedRobotAI>().enemyRecievedDamage = true;
+            player.GetComponent<HealthScript>().Health -= GetComponentInParent<SpeedRobotAI>().damage;
         }
     }
 }

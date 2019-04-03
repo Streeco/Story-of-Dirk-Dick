@@ -2,27 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoxingRobotAI : MonoBehaviour
+public class SpeedRobotAI : MonoBehaviour
 {
     public float speed = 25;
-    [HideInInspector]
-    public CircleCollider2D hand;
-    [HideInInspector]
-    public bool attacking = false;
-    [HideInInspector]
-    public bool enemyRecievedDamage = true;
     public int damage = 5;
     public int aggroRange = 10;
 
-    bool aggroed = false;
     GameObject player;
     Rigidbody2D rb;
     Animator animator;
     Vector2 direction;
     bool isRight = false;
+    bool aggroed = false;
+    [HideInInspector]
+    public bool attacking = false;
+    [HideInInspector]
+    public CircleCollider2D hand;
+    [HideInInspector]
+    public bool enemyRecievedDamage = true;
     bool damageDealt = true;
     int attackAnimation;
-
 
 
     // Start is called before the first frame update
@@ -40,6 +39,7 @@ public class BoxingRobotAI : MonoBehaviour
         {
             hand.enabled = false;
         }
+
         // If not attacking and player gets near, attack
         if (aggroed == false && Vector3.Distance(player.transform.position, transform.position) < aggroRange)
         {
@@ -57,31 +57,19 @@ public class BoxingRobotAI : MonoBehaviour
             AnimationHandling();
 
             // if not attacking, move
-            if (attacking == false && animator.GetCurrentAnimatorStateInfo(0).IsName("RoboWalk") == true)
+            if (attacking == false /*&& animator.GetCurrentAnimatorStateInfo(0).IsName("SpeedRobotwalk") == true*/)
             {
                 rb.velocity = new Vector2(direction.x * speed * Time.deltaTime * 10, rb.velocity.y);
             }
         }
+
     }
 
     void Flip()
     {
-        //if (/*isRight == false*/true)
-        //{
-            //transform.Find("Attack1").transform.localPosition = new Vector3(3.22f, 1);
-            //transform.Find("Attack2").transform.localPosition = new Vector3(4.56f, 0);
-            //transform.Find("Attack3").transform.localPosition = new Vector3(6.98f, 0);
-        //}
-        //else
-        //{
-        //    transform.Find("Attack1").transform.localPosition = new Vector3(3.22f, 1);
-        //    transform.Find("Attack2").transform.localPosition -= new Vector3(4.56f, 0);
-        //    transform.Find("Attack3").transform.localPosition -= new Vector3(6.98f, 0);
-        //}
-
         isRight = !isRight;
         transform.Rotate(Vector3.up * 180);
-        
+
     }
 
     void AnimationHandling()
@@ -97,7 +85,7 @@ public class BoxingRobotAI : MonoBehaviour
         }
 
         // Set attack animation
-        if (damageDealt == true && Vector2.Distance(player.transform.position, transform.position) < 4)
+        if (damageDealt == true && Vector2.Distance(player.transform.position, transform.position) < 5)
         {
             attacking = true;
             attackAnimation = Random.Range(1, 4);
@@ -114,30 +102,10 @@ public class BoxingRobotAI : MonoBehaviour
 
     void DealDamage()
     {
-        rb.velocity = Vector2.zero;
-        switch (attackAnimation)
-        {
-            case 1:
-                hand = transform.Find("Attack1").GetComponent<CircleCollider2D>();
-                break;
-            case 2:
-                hand = transform.Find("Attack2").GetComponent<CircleCollider2D>();
-                break;
-            case 3:
-                hand = transform.Find("Attack3").GetComponent<CircleCollider2D>();
-                break;
-            default:
-                hand = transform.Find("Attack1").GetComponent<CircleCollider2D>();
-                break;
-        }
+        //rb.velocity = Vector2.zero;
+        hand = transform.Find("Attack").GetComponent<CircleCollider2D>();
 
         hand.enabled = true;
-        //if (Physics2D.IsTouching(hand, player.GetComponent<CapsuleCollider2D>()))
-        //{
-        //    player.transform.position = new Vector3(100, 100);
-        //}
-
-        //hand.enabled = false;
         damageDealt = true;
     }
 
