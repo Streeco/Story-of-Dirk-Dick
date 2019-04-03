@@ -5,9 +5,14 @@ using UnityEngine;
 public class BoxingRobotAI : MonoBehaviour
 {
     public float speed = 25;
-    
-    bool aggroed = false;
+    [HideInInspector]
+    public CircleCollider2D hand;
+    [HideInInspector]
     public bool attacking = false;
+    [HideInInspector]
+    public bool enemyRecievedDamage = true;
+
+    bool aggroed = false;
     GameObject player;
     Rigidbody2D rb;
     Animator animator;
@@ -15,6 +20,8 @@ public class BoxingRobotAI : MonoBehaviour
     bool isRight = false;
     bool damageDealt = true;
     int attackAnimation;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +34,10 @@ public class BoxingRobotAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (enemyRecievedDamage != true)
+        {
+            hand.enabled = false;
+        }
         // If not attacking and player gets near, attack
         if (aggroed == false && Vector3.Distance(player.transform.position, transform.position) < 10)
         {
@@ -99,7 +110,6 @@ public class BoxingRobotAI : MonoBehaviour
 
     void DealDamage()
     {
-        CircleCollider2D hand;
         switch (attackAnimation)
         {
             case 1:
@@ -117,12 +127,17 @@ public class BoxingRobotAI : MonoBehaviour
         }
 
         hand.enabled = true;
-        if (Physics2D.IsTouching(hand, player.GetComponent<CapsuleCollider2D>()))
-        {
-            player.transform.position = new Vector3(100, 100);
-        }
+        //if (Physics2D.IsTouching(hand, player.GetComponent<CapsuleCollider2D>()))
+        //{
+        //    player.transform.position = new Vector3(100, 100);
+        //}
 
-        hand.enabled = false;
+        //hand.enabled = false;
         damageDealt = true;
+    }
+
+    void DisableDamageDealing()
+    {
+        hand.enabled = false;
     }
 }
