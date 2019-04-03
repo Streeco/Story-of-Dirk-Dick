@@ -122,7 +122,7 @@ public class BoxingRobotAI : MonoBehaviour
             player.transform.position = new Vector3(100, 100);
         }
 
-        hand.enabled = false;
+        //hand.enabled = false;
         damageDealt = true;
     }
 }
