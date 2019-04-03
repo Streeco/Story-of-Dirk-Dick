@@ -22,8 +22,11 @@ public class Player_Movement : MonoBehaviour
         Vector2 moveInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         moveVelocity = moveInput.normalized * speed;
 
+<<<<<<< HEAD
     //HEAD
 
+=======
+>>>>>>> origin/Mathias
         if (Input.GetKey(KeyCode.A) || (Input.GetKey(KeyCode.D) || (Input.GetKey(KeyCode.W) || (Input.GetKey(KeyCode.S))))) 
         {
             animator.SetFloat("Speed", 1);
@@ -33,16 +36,20 @@ public class Player_Movement : MonoBehaviour
             animator.SetFloat("Speed", 0);
         }
 
+<<<<<<< HEAD
     //origin/Peterkk
+=======
+>>>>>>> origin/Mathias
         if (Input.GetAxis("Horizontal") < 0 && isRight) Flip();
         if (Input.GetAxis("Horizontal") > 0 && !isRight) Flip();
+        //rb.MovePosition(rb.position + moveVelocity * Time.deltaTime);
+        rb.position += (moveVelocity * Time.deltaTime);
     }
 
-    void FixedUpdate()
-    {
-        rb.MovePosition(rb.position + moveVelocity * Time.fixedDeltaTime);
+    //void FixedUpdate()
+    //{
         
-    }
+    //}
 
     void Flip()
     {
