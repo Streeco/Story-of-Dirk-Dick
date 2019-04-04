@@ -37,8 +37,8 @@ public class Player_Movement_Stokgun : MonoBehaviour
             animator.SetBool("StokGun", true);
         }
 
-        if (Input.GetAxis("Horizontal") < 0 && isRight) Flip();
-        if (Input.GetAxis("Horizontal") > 0 && !isRight) Flip();
+        if (Input.GetAxis("Horizontal") < 0 && isRight || Input.GetAxis("Horizontal2") < 0 && isRight) Flip();
+        if (Input.GetAxis("Horizontal") > 0 && !isRight || Input.GetAxis("Horizontal2") > 0 && !isRight) Flip();
     }
 
     void FixedUpdate()
