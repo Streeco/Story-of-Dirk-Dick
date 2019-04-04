@@ -895,6 +895,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mcDinglenuts: {fileID: 2096534798}
+--- !u!114 &2096534800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2096534798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 170ae18f225825b4689e5ee65b35d81f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &2096534801
 BoxCollider2D:
   m_ObjectHideFlags: 0
