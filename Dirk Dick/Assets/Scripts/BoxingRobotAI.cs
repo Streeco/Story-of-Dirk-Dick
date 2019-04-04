@@ -5,9 +5,16 @@ using UnityEngine;
 public class BoxingRobotAI : MonoBehaviour
 {
     public float speed = 25;
-    
-    bool aggroed = false;
+    [HideInInspector]
+    public CircleCollider2D hand;
+    [HideInInspector]
     public bool attacking = false;
+    [HideInInspector]
+    public bool enemyRecievedDamage = true;
+    public int damage = 5;
+    public int aggroRange = 10;
+
+    bool aggroed = false;
     GameObject player;
     Rigidbody2D rb;
     Animator animator;
@@ -15,6 +22,8 @@ public class BoxingRobotAI : MonoBehaviour
     bool isRight = false;
     bool damageDealt = true;
     int attackAnimation;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -27,8 +36,12 @@ public class BoxingRobotAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (enemyRecievedDamage != true)
+        {
+            hand.enabled = false;
+        }
         // If not attacking and player gets near, attack
-        if (aggroed == false && Vector3.Distance(player.transform.position, transform.position) < 10)
+        if (aggroed == false && Vector3.Distance(player.transform.position, transform.position) < aggroRange)
         {
             aggroed = true;
         }
@@ -44,8 +57,10 @@ public class BoxingRobotAI : MonoBehaviour
             AnimationHandling();
 
             // if not attacking, move
-            if (attacking == false) rb.velocity = new Vector2(direction.x * speed * Time.deltaTime * 10, rb.velocity.y);
-            
+            if (attacking == false && animator.GetCurrentAnimatorStateInfo(0).IsName("RoboWalk") == true)
+            {
+                rb.velocity = new Vector2(direction.x * speed * Time.deltaTime * 10, rb.velocity.y);
+            }
         }
     }
 
@@ -99,7 +114,7 @@ public class BoxingRobotAI : MonoBehaviour
 
     void DealDamage()
     {
-        CircleCollider2D hand;
+        rb.velocity = Vector2.zero;
         switch (attackAnimation)
         {
             case 1:
@@ -117,12 +132,17 @@ public class BoxingRobotAI : MonoBehaviour
         }
 
         hand.enabled = true;
-        if (Physics2D.IsTouching(hand, player.GetComponent<CapsuleCollider2D>()))
-        {
-            player.transform.position = new Vector3(100, 100);
-        }
+        //if (Physics2D.IsTouching(hand, player.GetComponent<CapsuleCollider2D>()))
+        //{
+        //    player.transform.position = new Vector3(100, 100);
+        //}
 
         //hand.enabled = false;
         damageDealt = true;
+    }
+
+    void DisableDamageDealing()
+    {
+        hand.enabled = false;
     }
 }
