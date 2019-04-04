@@ -18,7 +18,7 @@ public class ShopInteraction : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.B))
         {
 
-            SceneManager.LoadScene("Shop", LoadSceneMode.Single);
+            SceneManager.LoadScene("StokShop", LoadSceneMode.Single);
         }
     }
 }

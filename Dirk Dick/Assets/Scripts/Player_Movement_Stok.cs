@@ -34,14 +34,13 @@ public class Player_Movement_Stok : MonoBehaviour
             animator.SetFloat("Speed", 0);
         }
 
-<<<<<<< HEAD:Dirk Dick/Assets/Scripts/Player_Movement.cs
-=======
+
+
         if (stok == true)
         {
             animator.SetBool("Stok", true);
         }
 
->>>>>>> origin/Peterkk:Dirk Dick/Assets/Scripts/Player_Movement_Stok.cs
 
         if (Input.GetAxis("Horizontal") < 0 && isRight) Flip();
         if (Input.GetAxis("Horizontal") > 0 && !isRight) Flip();
