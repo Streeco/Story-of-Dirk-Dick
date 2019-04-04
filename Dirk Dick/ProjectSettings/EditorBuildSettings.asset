@@ -27,6 +27,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Streets.unity
     guid: 3e016617dc2378e46bfaa01c83901c56
   - enabled: 1
-    path: Assets/Scenes/Shop.unity
+    path: Assets/Scenes/StokShop.unity
     guid: 623eb9903516daa44a441e2609b0f669
   m_configObjects: {}
