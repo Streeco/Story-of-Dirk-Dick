@@ -62,6 +62,12 @@ public class BoxingRobotAI : MonoBehaviour
                 rb.velocity = new Vector2(direction.x * speed * Time.deltaTime * 10, rb.velocity.y);
             }
         }
+
+        // delete if boxingrobot get death animation
+        if (animator.GetBool("Dead") == true)
+        {
+            Kill();
+        }
     }
 
     void Flip()
@@ -144,5 +150,10 @@ public class BoxingRobotAI : MonoBehaviour
     void DisableDamageDealing()
     {
         hand.enabled = false;
+    }
+
+    void Kill()
+    {
+        Destroy(gameObject);
     }
 }

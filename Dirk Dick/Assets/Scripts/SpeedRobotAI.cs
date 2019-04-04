@@ -54,7 +54,10 @@ public class SpeedRobotAI : MonoBehaviour
             if (direction.x < 0 && isRight) Flip();
             if (direction.x > 0 && !isRight) Flip();
 
-            AnimationHandling();
+            if (animator.GetBool("Dead") != true)
+            {
+                AnimationHandling();
+            }
 
             // if not attacking, move
             if (attacking == false /*&& animator.GetCurrentAnimatorStateInfo(0).IsName("SpeedRobotwalk") == true*/)
@@ -112,5 +115,10 @@ public class SpeedRobotAI : MonoBehaviour
     void DisableDamageDealing()
     {
         hand.enabled = false;
+    }
+
+    void Kill()
+    {
+        Destroy(gameObject);
     }
 }
