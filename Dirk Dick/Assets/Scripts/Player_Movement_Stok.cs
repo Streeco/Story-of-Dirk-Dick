@@ -34,6 +34,7 @@ public class Player_Movement_Stok : MonoBehaviour
             animator.SetFloat("Speed", 0);
         }
 
+<<<<<<< HEAD:Dirk Dick/Assets/Scripts/Player_Movement_Stok.cs
 
 
         if (stok == true)
@@ -42,15 +43,18 @@ public class Player_Movement_Stok : MonoBehaviour
         }
 
 
+=======
+>>>>>>> origin/Mathias:Dirk Dick/Assets/Scripts/Player_Movement.cs
         if (Input.GetAxis("Horizontal") < 0 && isRight) Flip();
         if (Input.GetAxis("Horizontal") > 0 && !isRight) Flip();
+        //rb.MovePosition(rb.position + moveVelocity * Time.deltaTime);
+        rb.position += (moveVelocity * Time.deltaTime);
     }
 
-    void FixedUpdate()
-    {
-        rb.MovePosition(rb.position + moveVelocity * Time.fixedDeltaTime);
+    //void FixedUpdate()
+    //{
         
-    }
+    //}
 
     void Flip()
     {
