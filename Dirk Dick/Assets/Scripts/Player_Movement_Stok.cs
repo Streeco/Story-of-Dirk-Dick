@@ -20,7 +20,7 @@ public class Player_Movement_Stok : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 moveInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        Vector2 moveInput = new Vector2(Input.GetAxis("Horizontal2"), Input.GetAxis("Vertical2"));
         moveVelocity = moveInput.normalized * speed;
         
 
@@ -44,8 +44,8 @@ public class Player_Movement_Stok : MonoBehaviour
 
 
 
-        if (Input.GetAxis("Horizontal") < 0 && isRight) Flip();
-        if (Input.GetAxis("Horizontal") > 0 && !isRight) Flip();
+        if (Input.GetAxis("Horizontal2") < 0 && isRight) Flip();
+        if (Input.GetAxis("Horizontal2") > 0 && !isRight) Flip();
         //rb.MovePosition(rb.position + moveVelocity * Time.deltaTime);
         rb.position += (moveVelocity * Time.deltaTime);
     }

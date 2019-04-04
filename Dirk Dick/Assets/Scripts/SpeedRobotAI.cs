@@ -16,7 +16,7 @@ public class SpeedRobotAI : MonoBehaviour
     bool aggroed = false;
     [HideInInspector]
     public bool attacking = false;
-    [HideInInspector]
+    
     public CircleCollider2D hand;
     [HideInInspector]
     public bool enemyRecievedDamage = true;
@@ -30,6 +30,7 @@ public class SpeedRobotAI : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        hand = transform.Find("Attack").GetComponent<CircleCollider2D>();
     }
 
     // Update is called once per frame
@@ -107,7 +108,7 @@ public class SpeedRobotAI : MonoBehaviour
     {
         //rb.velocity = Vector2.zero;
         hand = transform.Find("Attack").GetComponent<CircleCollider2D>();
-
+        Debug.Log("ksdfkskfs");
         hand.enabled = true;
         damageDealt = true;
     }
