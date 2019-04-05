@@ -20,7 +20,11 @@ public class EnemyHealth : MonoBehaviour
             }
         }
     }
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
 
+    }
     // Start is called before the first frame update
     void Start()
     {

@@ -23,10 +23,13 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Streets.unity
     guid: 3e016617dc2378e46bfaa01c83901c56
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/StokShop.unity
     guid: 623eb9903516daa44a441e2609b0f669
+  - enabled: 1
+    path: Assets/Scenes/Map.unity
+    guid: c62079b00a3e4b3479315a373516844f
   m_configObjects: {}
